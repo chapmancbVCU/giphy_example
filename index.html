@@ -16,7 +16,7 @@
         button.addEventListener('click', () => {
             img.remove();
             document.body.appendChild(img);
-            getImage();
+            getImage2();
         });
 
         function getImage() {
@@ -29,6 +29,16 @@
                 });
         }
 
+        // Same as above but using async and await.
+        async function getImage2() {
+            try {
+                const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=9xe3UhngVQ4ZH7TBo0n2IuaIVpHHKWru&s=cats', {mode: 'cors'})
+                const catData = await response.json();
+                img.src = catData.data.images.original.url;
+            } catch (error) {
+                console.log(error);
+            }
+        }
         getImage();
     </script>
 </body>
