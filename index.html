@@ -7,16 +7,29 @@
     <title>API Example</title>
 </head>
 <body>
-    <img src="#">
+    <button>Submit</button>
     <script>
-        const img = document.querySelector('img');
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=9xe3UhngVQ4ZH7TBo0n2IuaIVpHHKWru&s=cats', {mode: 'cors'})
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(response) {
-                img.src = response.data.images.original.url;
-            });
+        const img = document.createElement('img');
+        img.setAttribute('src', '#');
+        document.body.append(img);
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            img.remove();
+            document.body.appendChild(img);
+            getImage();
+        });
+
+        function getImage() {
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=9xe3UhngVQ4ZH7TBo0n2IuaIVpHHKWru&s=cats', {mode: 'cors'})
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    img.src = response.data.images.original.url;
+                });
+        }
+
+        getImage();
     </script>
 </body>
 </html>
