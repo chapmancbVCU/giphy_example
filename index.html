@@ -19,6 +19,7 @@
             getImage2();
         });
 
+        // Using promises
         function getImage() {
             fetch('https://api.giphy.com/v1/gifs/translate?api_key=9xe3UhngVQ4ZH7TBo0n2IuaIVpHHKWru&s=cats', {mode: 'cors'})
                 .then(function(response) {
@@ -29,7 +30,7 @@
                 });
         }
 
-        // Same as above but using async and await.
+        // Same as above but using async and await to handle promises.
         async function getImage2() {
             try {
                 const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=9xe3UhngVQ4ZH7TBo0n2IuaIVpHHKWru&s=cats', {mode: 'cors'})
